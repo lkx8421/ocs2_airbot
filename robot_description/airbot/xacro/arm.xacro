@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="arm" params="">
+        <link name="world"/>
+        <joint name="fixed_base_joint" type="fixed">
+            <parent link="world"/>
+            <child link="base_link"/>
+        </joint>
+        <link name="base_link">
+            <visual>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://robot_description/airbot/meshes/base_link.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.75294 0.75294 0.75294 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://robot_description/airbot/meshes/base_link.STL" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.1" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+            </inertial>
+        </link>
+        <link name="link1">
+            <inertial>
+                <origin rpy="0 0 0" xyz="7.9126E-05 -0.002527 -0.0041359" />
+                <mass value="0.5571" />
+                <inertia ixx="0.0003462" ixy="0" ixz="-1.4E-06" iyy="0.0002863" iyz="-1.1E-06" izz="0.0003255" />
+            </inertial>
+            <visual>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://robot_description/airbot/meshes/link1.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.89804 0.91765 0.92941 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://robot_description/airbot/meshes/link1.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="joint1" type="revolute">
+            <origin rpy="0 0 0" xyz="0 0 0.1172" />
+            <parent link="base_link" />
+            <child link="link1" />
+            <axis xyz="0 0 1" />
+            <limit effort="18" lower="-3.14" upper="2.09" velocity="3.14" />
+        </joint>
+        <link name="link2">
+            <inertial>
+                <origin rpy="0 0 0" xyz="0.22493 0.0047721 0.008023" />
+                <mass value="0.64621" />
+                <inertia ixx="0.0004901" ixy="0.0005229" ixz="-0.0002434" iyy="0.0050391" iyz="-2.95E-05" izz="0.00195052" />
+            </inertial>
+            <visual>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://robot_description/airbot/meshes/link2.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.75294 0.75294 0.75294 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://robot_description/airbot/meshes/link2.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="joint2" type="revolute">
+            <origin rpy="1.5708 -2.7549 0" xyz="0 0 0" />
+            <parent link="link1" />
+            <child link="link2" />
+            <axis xyz="0 0 1" />
+            <limit effort="18" lower="-2.96" upper="0.17" velocity="3.14" />
+        </joint>
+        <link name="link3">
+            <inertial>
+                <origin rpy="0 0 0" xyz="0.20055 -5.5576E-05 0.0019184" />
+                <mass value="0.44556" />
+                <inertia ixx="0.000167" ixy="-4E-07" ixz="-0.0001263" iyy="0.0006727" iyz="-1E-07" izz="0.00060895" />
+            </inertial>
+            <visual>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://robot_description/airbot/meshes/link3.STL" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.75294 0.75294 0.75294 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://robot_description/airbot/meshes/link3.STL" />
+                </geometry>
+            </collision>
+        </link>
+        <joint name="joint3" type="revolute">
+            <origin rpy="0 0 -2.7548" xyz="0.27009 0 0" />
+            <parent link="link2" />
+            <child link="link3" />
+            <axis xyz="0 0 1" />
+            <limit effort="18" lower="-0.087" upper="3.14" velocity="3.14" />
+        </joint>
+        <link name="link4">
+            <inertial>
+                <origin rpy="0 0 0" xyz="0.0015 0.00040412 -0.002328" />
+                <mass value="0.345876" />
+                <inertia ixx="0.0004235" ixy="0" ixz="4.7E-06" iyy="0.00012" iyz="-1E-07" izz="0.0001269" />
+            </inertial>
+            <visual>
+                <origin rpy="1.57 0 0" xyz="0 0 0" />
+                <geometry>
+                    <cylinder radius="0.03" length="0.05" />
+                    <!-- <mesh filename="package://robot_description/airbot/meshes/link4.STL" /> -->
+                </geometry>
+                <material name="">
+                    <color rgba="1 1 1 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="1.57 0 0" xyz="0 0 0" />
+                <geometry>
+                    <cylinder radius="0.03" length="0.05" />
+                    <!-- <mesh filename="package://robot_description/airbot/meshes/link4.STL" /> -->
+                </geometry>
+            </collision>
+        </link>
+        <joint name="joint4" type="revolute">
+            <origin rpy="3.1416 -1.5708 0" xyz="0.30854 0 0" />
+            <parent link="link3" />
+            <child link="link4" />
+            <axis xyz="0 0 1" />
+            <limit effort="3" lower="-2.96" upper="2.96" velocity="6.28" />
+        </joint>
+        <link name="link5">
+            <inertial>
+                <origin rpy="0 0 0" xyz="8.3328E-06 0.026148 0.002525" />
+                <mass value="0.186636" />
+                <inertia ixx="0.0001825" ixy="0" ixz="-3.29E-05" iyy="0.0004677" iyz="0" izz="0.0004286" />
+            </inertial>
+            <visual>
+                <origin rpy="1.57 0 0" xyz="0 0.06 0" />
+                <geometry>
+                    <!-- <mesh filename="package://robot_description/airbot/meshes/link5.STL" /> -->
+                    <cylinder radius="0.03" length="0.05" />
+                </geometry>
+                <material name="">
+                    <color rgba="0.89804 0.91765 0.92941 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin rpy="1.57 0 0" xyz="0 0.06 0" />
+                <geometry>
+                    <cylinder radius="0.03" length="0.05" />
+                    <!-- <mesh filename="package://robot_description/airbot/meshes/link5.STL" /> -->
+                </geometry>
+            </collision>
+        </link>
+        <joint name="joint5" type="revolute">
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <parent link="link4" />
+            <child link="link5" />
+            <axis xyz="0 0 1" />
+            <limit effort="3" lower="-1.74" upper="1.74" velocity="6.28" />
+        </joint>
+        <link name="link6">
+            <inertial>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <mass value="1E-15" />
+                <inertia ixx="1E-11" ixy="1E-15" ixz="1E-15" iyy="1E-11" iyz="1E-15" izz="1E-11" />
+            </inertial>
+        </link>
+        <joint name="joint6" type="revolute">
+            <origin rpy="0 0 1.5708" xyz="0 0.085 0" />
+            <parent link="link5" />
+            <child link="link6" />
+            <axis xyz="1 0 0" />
+            <limit effort="3" lower="-1.74" upper="1.74" velocity="6.28" />
+        </joint>
+
+    </xacro:macro>
+</robot>
