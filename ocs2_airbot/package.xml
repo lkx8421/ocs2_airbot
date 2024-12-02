@@ -32,6 +32,7 @@
   <depend>ocs2_self_collision</depend>
   <depend>ocs2_self_collision_visualization</depend>
   <depend>ocs2_mobile_manipulator</depend>
+  <depend>ocs2_mobile_manipulator_ros</depend>
 
   <depend>pinocchio</depend>
 
